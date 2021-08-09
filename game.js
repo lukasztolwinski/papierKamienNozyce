@@ -7,7 +7,7 @@ const gameSummary = {
 
 const game = {
     playerHand: "",
-    ai: ""
+    aiHand: ""
 }
 
 
@@ -21,4 +21,20 @@ function handSelection() {
 
 }
 
+
+function iaChoice() {
+    const aiHand = hands[Math.floor(Math.random() * hands.length)].dataset.option;
+    return aiHand;
+}
+
+//funkcja sterująca
+function startGame() {
+    if (!game.playerHand) return alert("Wybierz dłoń!");
+
+    game.aiHand = iaChoice();
+}
+
+
 hands.forEach(hand => hand.addEventListener("click", handSelection))
+
+document.querySelector(".start").addEventListener("click", startGame)
