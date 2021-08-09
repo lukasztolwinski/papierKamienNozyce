@@ -27,11 +27,27 @@ function iaChoice() {
     return aiHand;
 }
 
+function checkResult(player, ia) {
+    if (player === ia) {
+        //remis
+        return "draw";
+    } else if ((player === "papier" && ia === "kamień") || (player === "kamień" && ia === "nożyczki") || (player === "nożyczki" && ia === "papier")) {
+        //wygrana
+        return "win";
+    } else {
+        //przegrana
+        return "loss";
+    }
+
+}
+
 //funkcja sterująca
 function startGame() {
     if (!game.playerHand) return alert("Wybierz dłoń!");
 
     game.aiHand = iaChoice();
+    const gameResult = checkResult(game.playerHand, game.aiHand);
+    console.log(gameResult);
 }
 
 
