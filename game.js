@@ -65,6 +65,11 @@ function publishResult(player, ai, result) {
 
 }
 
+function endGame() {
+    document.querySelector(`[data-option='${game.playerHand}']`).style.boxShadow = "";
+    game.playerHand = "";
+}
+
 
 //funkcja sterująca
 function startGame() {
@@ -74,6 +79,7 @@ function startGame() {
     const gameResult = checkResult(game.playerHand, game.aiHand);
     console.log(gameResult);
     publishResult(game.playerHand, game.aiHand, gameResult);
+    endGame();
 }
 
 
